@@ -23,7 +23,7 @@ gem 'rack-cors'
 gem 'rake'
 
 # Component requirements
-gem 'mongoid', '>= 3.0.0'
+gem 'mongoid', '>= 7.1.2'
 
 gem 'prometheus-client'
 
