@@ -1,0 +1,9 @@
+---
+:orm: mongoid
+:test: rspec
+:mock: none
+:script: none
+:renderer: none
+:stylesheet: none
+:namespace: GitClassRoomService
+:migration_format: number

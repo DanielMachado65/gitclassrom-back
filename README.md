@@ -1,2 +1,0 @@
-# gitclassrom-back
-GitClassRoom back
