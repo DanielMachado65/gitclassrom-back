@@ -19,8 +19,9 @@ source 'https://rubygems.org'
 gem 'httparty'
 
 # Project requirements
+gem 'rack', '>= 2.0.8'
 gem 'rack-cors'
-gem 'rake'
+gem 'rake', '>= 12.3.3'
 
 # Component requirements
 gem 'mongoid', '>= 7.1.2'
