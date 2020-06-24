@@ -55,12 +55,15 @@ Padrino.before_load do
   ENV['RACK_ENV'] = 'test' if ENV['RACK_ENV'].nil?
   env_vars = YAML.load_file("#{Padrino.root}/#{ENV['RACK_ENV']}.yaml")
   env_vars.each { |env_var| ENV[env_var.first] = env_var.last }
+
+  Padrino.dependency_paths << Padrino.root('app/services/**/*.rb')
 end
 
 ##
 # Add your after (RE)load hooks here
 #
 Padrino.after_load do
+  GitClassRoomService::App.prerequisites << Padrino.root('app/services/**/*.rb')
 end
 
 Padrino.load!

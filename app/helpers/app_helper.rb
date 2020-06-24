@@ -1,0 +1,30 @@
+# frozen_string_literal: true
+
+GitClassRoomService::App.helpers do
+  def render_errors(service)
+    status 400
+    { "errors": service }.to_json
+  end
+
+  def render_not_found(service)
+    status 404
+    { "error": service }.to_json
+  end
+
+  def render_success(service)
+    status 200
+    service.to_json
+  end
+
+  def render_created(service)
+    status 200
+    service.to_json
+  end
+
+  def render(service, created = false)
+    return render_success(msg: service) if service.is_a? String
+    return render_errors(service[:error]) if service[:code] == 400
+
+    created ? render_created(service) : render_success(service)
+  end
+end

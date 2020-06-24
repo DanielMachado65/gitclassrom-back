@@ -19,7 +19,7 @@ source 'https://rubygems.org'
 gem 'httparty'
 
 # Project requirements
-gem 'rack', '>= 2.0.8'
+gem 'rack'
 gem 'rack-cors'
 gem 'rake', '>= 12.3.3'
 

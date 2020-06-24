@@ -4,6 +4,7 @@ module GitClassRoomService
   class App < Padrino::Application
     register Padrino::Mailer
     register Padrino::Helpers
+
     enable :sessions
 
     ##
@@ -62,5 +63,8 @@ module GitClassRoomService
     #     render 'errors/500'
     #   end
     #
+    before do
+      @body = JSON.parse(request.body.read)
+    end
   end
 end

@@ -11,6 +11,8 @@ services:
   gitclassroom-service:
     build: .
     image: gitclassroom-service
+    stdin_open: true
+    tty: true
     volumes:
       - type: bind
         source: ./
