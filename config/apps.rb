@@ -38,7 +38,7 @@ Padrino.configure_apps do
       # put real origins here
       origins '*'
       # and configure real resources here
-      resource '*', headers: :any, methods: %i[get post options]
+      resource '*', headers: :any, methods: %i[get post options put]
     end
   end
 end
