@@ -14,6 +14,5 @@ class User
   field :token, type: String
 
   validates :username, presence: true, length: { minimum: 3, maximum: 15 }, uniqueness: { case_sensitive: false }, format: { with: /\A[a-zA-Z0-9_\.]+\z/ }
-  validates :name, presence: true
   validates :email, presence: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
 end

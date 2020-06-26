@@ -27,4 +27,10 @@ GitClassRoomService::App.helpers do
 
     created ? render_created(service) : render_success(service)
   end
+
+  def bearer_token
+    pattern = /^bearer /
+    header = env['HTTP_AUTHORIZATION']
+    @bearer_token = header.gsub(pattern, '') if header&.match(pattern)
+  end
 end
