@@ -18,9 +18,6 @@ GitClassRoomService::App.controllers :user, map: 'api/v1', provides: :json do
   end
 
   get :find_user, map: 'users/:id' do
-    
-    binding.pry
-    
     render(Api::UserService.get_user_by_gitlab(params[:id]))
   end
 end
