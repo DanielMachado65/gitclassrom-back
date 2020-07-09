@@ -9,6 +9,8 @@ class User
   field :username, type: String
   field :email, type: String
   field :name, type: String
+  field :type, type: String, default: 'study'
+  # Ex:- :default => 'study'/'teacher'
 
   field :avatar_url, type: String
   field :token, type: String
