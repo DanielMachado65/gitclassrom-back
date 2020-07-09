@@ -9,17 +9,12 @@ module Api
     end
 
     def self.create(token, params)
-      binding.pry
-
-      response = create_class(token, {
-        name: params['name'],
-        path: params['path'],
-        description: params['description'],
-        parent_id: params['parent_id']
-      })
-
-      
-      
+      create_class(token, {
+                     name: params['name'],
+                     path: params['path'],
+                     description: params['description'],
+                     parent_id: params['parent_id']
+                   })
     end
 
     class << self
