@@ -12,6 +12,6 @@ GitClassRoomService::App.controllers :classroom, map: 'api/v1/classroom',
   end
 
   post :create, map: '' do
-    render(Api::ClassroomService.create(@body))
+    render(Api::ClassroomService.create(@bearer_token, @body))
   end
 end

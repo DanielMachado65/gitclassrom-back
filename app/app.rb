@@ -60,7 +60,9 @@ module GitClassRoomService
     #   end
     #
     before do
-      @body = JSON.parse(request.body.read) unless request.body.read.empty?
+      @body = JSON.parse(request.body.read)
+    rescue JSON::ParserError => e
+      @body = {}
     end
   end
 end
