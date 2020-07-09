@@ -6,6 +6,10 @@ GitClassRoomService::App.helpers do
     { "errors": service }.to_json
   end
 
+  def render_not_authorized
+    halt 401, {'Content-Type' => 'text/plain'}, 'Não está autorizado!'
+  end
+
   def render_not_found(service)
     status 404
     { "error": service }.to_json

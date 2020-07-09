@@ -46,10 +46,6 @@ module GitClassRoomService
     ##
     # You can configure for a specified environment like:
     #
-    #   configure :development do
-    #     set :foo, :bar
-    #     disable :asset_stamp # no asset timestamping for dev
-    #   end
     #
 
     ##
@@ -64,7 +60,7 @@ module GitClassRoomService
     #   end
     #
     before do
-      @body = JSON.parse(request.body.read)
+      @body = JSON.parse(request.body.read) unless request.body.read.empty?
     end
   end
 end

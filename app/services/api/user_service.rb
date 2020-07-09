@@ -18,11 +18,14 @@ module Api
 
     def self.get_user_by_gitlab(id)
       response = find_by_gitlab(id)
-      return { code: 404, error: 'não foi possivel localizar no gitlab' } unless response.code == 200
+      unless response.code == 200
+        return { code: 404, error: 'não foi possivel localizar no gitlab' }
+      end
 
       user = find(response['id'])
-      
       return { code: 400, error: 'Não foi possivel localizar' } if user.nil?
+
+      user
     end
 
     def self.update(params)

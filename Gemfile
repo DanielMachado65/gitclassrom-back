@@ -21,6 +21,7 @@ gem 'httparty'
 # Project requirements
 gem 'rack'
 gem 'rack-cors'
+gem 'rack-contrib'
 gem 'rake', '>= 12.3.3'
 
 # Component requirements

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'i18n'
+require 'i18n/backend/fallbacks'
 ##
 # This file mounts each app in the Padrino project to a specified sub-uri.
 # You can mount additional applications using any of these commands below:
@@ -41,6 +43,14 @@ Padrino.configure_apps do
       resource '*', headers: :any, methods: %i[get post options put]
     end
   end
+
+  configure do
+    I18n::Backend::Simple.include I18n::Backend::Fallbacks
+    I18n.load_path += Dir[File.join(settings.root, 'locales', '*.yml')]
+    I18n.backend.load_translations
+  end
+
+  use Rack::Locale
 end
 
 # Mounts the core application for this project
