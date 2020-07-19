@@ -20,6 +20,16 @@ module Api
       response
     end
 
+    def create(_params)
+      # 8522137
+      response = HTTParty.post("#{URL}/projects", header.merge(body: {
+
+                                                               }))
+      return not_found unless response.code == 200
+
+      response
+    end
+
     private
 
     def find_or_create(response)
