@@ -8,7 +8,7 @@ module Api
 
     def all
       response = HTTParty.get("#{URL}/users/#{@user.gitlab_id}/projects", header)
-      return not_found unless @response.code == 200
+      return not_found unless response.code == 200
 
       response
     end

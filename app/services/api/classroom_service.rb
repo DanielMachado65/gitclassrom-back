@@ -1,30 +1,32 @@
 # frozen_string_literal: true
 
 module Api
-  class ClassroomService
-    URL = 'https://gitlab.com/api/v4/'
+  class ClassroomService < ApplicationService
 
-    def self.all(token)
-      find_all_class(token)
+    def initialize(user) super(user); end
+
+    def find(id)
+      klass = find_klass(id)
+      return not_found unless klass.code == 200
+
+      klass
     end
 
-    def self.create(token, params)
-      create_class(token, {
-                     name: params['name'],
-                     path: params['path'],
-                     description: params['description'],
-                     parent_id: params['parent_id']
-                   })
+    def create(body)
+      klass = create_klass(body)
     end
 
-    class << self
-      def find_all_class(token)
-        HTTParty.get("#{URL}/groups", headers: { 'Authorization' => "Bearer #{token}" })
-      end
+    private
 
-      def create_class(token, body)
-        HTTParty.post("#{URL}/groups", body: body, headers: { 'Authorization' => "Bearer #{token}" })
-      end
+    def find_klass(id)
+      _get "#{URL}/groups/#{id}"
+    end
+
+    def create_klass(body)
+      _post "#{URL}/groups", { name: body['name'],
+                               path: create_path(body['name']),
+                               description: body['description'],
+                               parent_id: body['parent_id'] }
     end
   end
 end
